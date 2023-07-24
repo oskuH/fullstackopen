@@ -1,0 +1,11 @@
+PUT http://localhost:3003/api/blogs/64ba3998e09800a7f17a49c0
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjY0YjA1ZmUwZDA3NzZkNzA4NTQ5MGRkNCIsImlhdCI6MTY4OTkyOTY1NywiZXhwIjoxNjg5OTMzMjU3fQ.E2obqFQAyhb5Q39iBRD5dZUxLZAbKrNsPHKubkRXtcU
+
+{
+  "url": ".com",
+  "title": "fourth",
+  "author": "Fourth",
+  "userId": "64b05fe0d0776d7085490dd4",
+  "likes": "1"
+}
