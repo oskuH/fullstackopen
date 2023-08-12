@@ -1,0 +1,6 @@
+POST http://localhost:3003/api/blogs/64d3859d97828f4a8eb79964/comments
+Content-Type: application/json
+
+{
+  "comment": "pendolino Suomesa"
+}
