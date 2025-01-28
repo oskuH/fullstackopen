@@ -1,0 +1,10 @@
+POST http://localhost:3001/api/patients
+Content-Type: application/json
+
+{
+    "name": "Matti Meikäläinen",
+    "dateOfBirth": "1969-03-10",
+    "ssn": "100369-7941",
+    "gender": "helicopter",
+    "occupation": "Shopkeeper"
+}
