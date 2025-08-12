@@ -1,0 +1,23 @@
+{
+  "name": "e2e-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:firefox": "playwright test --project=firefox",
+    "test:trace": "playwright test --project=firefox --trace on",
+    "test:report": "playwright show-report",
+    "eslint": "eslint 'tests/**'"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.32.0",
+    "@playwright/test": "^1.54.1",
+    "@stylistic/eslint-plugin": "^5.2.2",
+    "@types/node": "^24.1.0",
+    "eslint": "^9.32.0",
+    "eslint-plugin-playwright": "^2.2.1"
+  }
+}

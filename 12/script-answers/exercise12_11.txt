@@ -1,0 +1,20 @@
+Script started on 2025-08-07 16:16:14+03:00 [TERM="xterm-256color" TTY="/dev/pts/3" COLUMNS="133" LINES="25"]
+[?2004h]0;oshy@lx1-fuxi179: ~/courses/FSO/12/part12-containers-applications/todo-app/todo-backend[01;32moshy@lx1-fuxi179[00m:[01;34m~/courses/FSO/12/part12-containers-applications/todo-app/todo-backend[00m$ docker exec -it todo-backend-redis-1 bash
+[?2004l[?2004hroot@787172b51a62:/data# redis-cli KEYS "*"
+[?2004l1) "added_todos"
+[?2004hroot@787172b51a62:/data# redis-cli GET added- _todos
+[?2004l"3"
+[?2004hroot@787172b51a62:/data# redis-cli SET added_todos 9001
+[?2004lOK
+[?2004hroot@787172b51a62:/data# redis-cli SET added_todos 9001[5PGET added_todos
+[?2004l"9002"
+[?2004hroot@787172b51a62:/data# redis-cli DEL added_todos
+[?2004l(integer) 1
+[?2004hroot@787172b51a62:/data# redis     redis-cli DEL added_todosGET added_todos
+[?2004l"1"
+[?2004hroot@787172b51a62:/data# exit
+[?2004lexit
+[?2004h]0;oshy@lx1-fuxi179: ~/courses/FSO/12/part12-containers-applications/todo-app/todo-backend[01;32moshy@lx1-fuxi179[00m:[01;34m~/courses/FSO/12/part12-containers-applications/todo-app/todo-backend[00m$ exit
+[?2004lexit
+
+Script done on 2025-08-07 16:18:10+03:00 [COMMAND_EXIT_CODE="0"]

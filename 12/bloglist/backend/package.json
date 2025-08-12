@@ -1,0 +1,40 @@
+{
+  "name": "bloglist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node index.js",
+    "test:CI": "cross-env NODE_ENV=test jest --verbose --runInBand --no-watchman",
+    "start:e2e-tests": "cross-env NODE_ENV=test node index.js",
+    "start:local": "cross-env NODE_ENV=production-local node --watch index.js",
+    "test": "cross-env NODE_ENV=test-local jest --verbose --runInBand --no-watchman",
+    "start:e2e-tests-local": "cross-env NODE_ENV=test-local node index.js",
+    "dev": "cross-env NODE_ENV=development node --watch index.js",
+    "eslint": "eslint './**/*.js'"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.31.0",
+    "@stylistic/eslint-plugin": "^5.2.2",
+    "eslint": "^9.31.0",
+    "jest": "^29.5.0",
+    "supertest": "^6.3.3"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
+    "jsonwebtoken": "^9.0.1",
+    "lodash": "^4.17.21",
+    "mongoose": "^8.16.5",
+    "morgan": "^1.10.0"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}

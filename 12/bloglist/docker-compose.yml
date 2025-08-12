@@ -1,0 +1,45 @@
+services:
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
+    volumes:
+      - ./backend/mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+      - mongo_data:/data/db
+
+  bloglist-backend:
+    image: bloglist-backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    environment:
+      - MONGODB_URI=${MONGODB_URI}/${MONGO_INITDB_DATABASE}
+      - JWT_SECRET=${JWT_SECRET}
+    container_name: bloglist-backend
+    depends_on:
+      - mongo
+  
+  bloglist-frontend:
+    image: bloglist-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args: 
+        - VITE_API_URL=http://localhost:${NGINX_PORT}
+    container_name: bloglist-frontend
+
+  nginx:
+    image: nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:root
+    ports:
+      - ${NGINX_PORT}:80
+    container_name: bloglist-reverse-proxy
+    depends_on:
+      - bloglist-backend
+      - bloglist-frontend
+
+volumes:
+  mongo_data:

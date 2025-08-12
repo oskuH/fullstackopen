@@ -1,0 +1,8 @@
+.todo-list-item {
+  padding-left: 0;
+  border-bottom: 1px solid #000000ff
+}
+
+.todo-list-item:last-child {
+  border-bottom: none
+}

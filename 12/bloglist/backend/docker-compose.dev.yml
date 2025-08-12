@@ -1,0 +1,12 @@
+services:
+  server:
+    image: bloglist-backend-dev
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - 3000:3000
+    environment:
+      - MONGODB_URI=mongodb://username:password@mongo:27017/bloglist

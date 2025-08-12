@@ -1,0 +1,48 @@
+services:
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: bloglist
+    volumes:
+      - ./backend/mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+      - mongo_data:/data/db
+
+  bloglist-backend:
+    image: bloglist-backend-dev
+    build:
+      context: ./backend
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./backend:/usr/src/app
+    environment:
+      - MONGODB_URI=mongodb://username:password@mongo:27017/bloglist
+    container_name: bloglist-backend-dev
+    depends_on:
+      - mongo
+  
+  bloglist-frontend:
+    image: bloglist-frontend-dev
+    build:
+      context: ./frontend
+      dockerfile: dev.Dockerfile
+    environment:
+      - VITE_PROXY_TARGET=http://localhost:${NGINX_PORT}
+    volumes:
+      - ./frontend:/usr/src/app
+    container_name: bloglist-frontend-dev
+
+  nginx:
+    image: nginx
+    volumes:
+      - ./nginx.dev.conf:/etc/nginx/nginx.conf:root
+    ports:
+      - ${NGINX_PORT}:80
+    container_name: bloglist-reverse-proxy
+    depends_on:
+      - bloglist-backend
+      - bloglist-frontend
+
+volumes:
+  mongo_data:
